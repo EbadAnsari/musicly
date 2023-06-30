@@ -1,0 +1,230 @@
+:root {
+  --anti-flash-white-98: hsl(0, 0%, 90%);
+  --anti-flash-white-99: hsl(0, 0%, 94%);
+  --left-from: 90%;
+  --left-width: 18%;
+  --left-height: 90%;
+  --right-left: 18%;
+  --right-width: 82%;
+  --right-height: 90%;
+  --bottom-from: 90%;
+  --bottom-width: 100vw;
+  --bottom-height: 10%;
+  --color-theme: hsl(88, 91%, 37%);
+  --color-theme-dim: hsla(88, 91%, 37%, 0.7);
+  --color-theme-dimer: hsla(88, 91%, 37%, 0.2);
+  --scroll-bar-visibility: "hidden";
+}
+
+* {
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
+  outline: none;
+  list-style: none;
+  text-decoration: none;
+  font-family: Arial, Helvetica, sans-serif;
+  color: black;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+
+a {
+  cursor: pointer;
+}
+
+.full-flex {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+:root {
+  --font-size: 20px;
+  --disabled-lyric: rgba(226, 226, 226, 0.21);
+}
+
+#main-body {
+  position: fixed;
+  top: 100%;
+  z-index: 5;
+  width: 100vw;
+  height: 100vh;
+  background-color: yellowgreen;
+  overflow: hidden;
+  transition: top 300ms ease-in-out;
+}
+#main-body #song-cover-blured {
+  width: 100%;
+  height: 100%;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  filter: blur(20px) brightness(50%);
+}
+#main-body #details {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 100vw;
+  height: 100vh;
+}
+#main-body #details #song-info {
+  position: absolute;
+  top: 65%;
+  left: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+}
+#main-body #details #song-info #cover-photo {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  box-shadow: 3px 5px 8px 1px rgba(0, 0, 0, 0.5);
+}
+#main-body #details #song-info #song-title-artist {
+  width: 400px;
+  overflow: hidden;
+  height: 60px;
+}
+#main-body #details #song-info #song-title-artist #song-title,
+#main-body #details #song-info #song-title-artist #song-artist {
+  color: white;
+  font-size: 20px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+#main-body #details #song-info #song-title-artist #song-title {
+  font-size: 30px;
+  font-weight: bold;
+}
+#main-body #details #lyrics {
+  position: absolute;
+  left: 55%;
+  top: 8%;
+  width: 40%;
+  height: 80%;
+  border-radius: 30px;
+  overflow: hidden scroll;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  scroll-behavior: smooth;
+  background-color: rgba(5, 5, 5, 0.33);
+  font-size: 20px;
+}
+#main-body #details #lyrics .lyric {
+  color: var(--disabled-lyric);
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  cursor: pointer;
+  padding: 10px;
+  transition: all 300ms ease;
+}
+#main-body #action-bar {
+  position: absolute;
+  top: 90%;
+  left: 50%;
+  display: flex;
+  transform: translate(-50%);
+  -moz-column-gap: 20px;
+       column-gap: 20px;
+}
+#main-body #action-bar .seekbar-time .left-label,
+#main-body #action-bar .seekbar-time .right-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: white;
+}
+#main-body #action-bar .seekbar-time .left-label {
+  margin-right: 20px;
+}
+#main-body #action-bar .seekbar-time .right-label {
+  margin-left: 20px;
+}
+#main-body #action-bar .seekbar-time .container .seekbar-background {
+  height: 3px;
+}
+#main-body #action-bar .seekbar-time .container .seekbar-background .range {
+  height: 5px;
+}
+#main-body #action-bar .media-button {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  cursor: default;
+}
+#main-body #action-bar .media-button .previous,
+#main-body #action-bar .media-button .next {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+#main-body #action-bar .media-button .previous:active,
+#main-body #action-bar .media-button .next:active {
+  border-color: rgb(154, 154, 154);
+}
+#main-body #action-bar .media-button .previous,
+#main-body #action-bar .media-button .next {
+  fill: white;
+  stroke: white;
+  stroke-width: 90px;
+  transition: all 150ms ease-in;
+  width: 15px;
+  height: 15px;
+  margin: 0px 10px 0px 10px;
+}
+#main-body #action-bar .media-button .previous:hover,
+#main-body #action-bar .media-button .next:hover {
+  fill: rgb(158, 158, 158);
+  stroke: rgb(158, 158, 158);
+}
+#main-body #action-bar .media-button .next {
+  transform: rotate(180deg);
+}
+#main-body #action-bar .media-button .play-pause {
+  box-shadow: 0px 3px 10px -1px rgb(0, 0, 0);
+}
+#main-body #down {
+  position: absolute;
+  top: 4%;
+  left: 2%;
+  z-index: 1;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  background-color: rgba(77, 77, 77, 0.1215686275);
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0px 0px 8px -4px rgba(0, 0, 0, 0.101);
+  transition: all 100ms linear;
+}
+#main-body #down:hover {
+  background-color: rgba(77, 77, 77, 0.6117647059);
+}
+#main-body #down svg {
+  width: 15px;
+  height: 15px;
+  transform: rotate(-90deg);
+}
+#main-body #down svg .line {
+  fill: none;
+  stroke: #ffffff;
+  stroke-width: 200;
+  stroke-linecap: round;
+  stroke-miterlimit: 10;
+}

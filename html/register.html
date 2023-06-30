@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <link rel="stylesheet" href="css/demo.css"> -->
+
+    <script src="../../js/jsmedia.js"></script>
+    <script>
+        function relativeToAbsolute(minutes, seconds) {
+            return parseFloat(seconds) + parseFloat(minutes) * 60;
+        }
+    </script>
+</head>
+
+<body>
+    <input type="file" name="songFile" id="songFile">
+    <form action="/register" method="post" id="form" enctype="multipart/form-data">
+        {{!-- <input type="file" name="image" id="image"> --}}
+
+    </form>
+    <script>
+        const form = document.getElementById('form');
+
+
+
+
+        document.getElementById("songFile").addEventListener("input", (event) => {
+            jsmediatags.read(event.target.files[0], {
+                onSuccess: tag => {
+
+                    let lyric = {};
+                    try {
+                        tag.tags.lyrics.split("\n").forEach(element => {
+                            element = element.split("]");
+                            element[0] = element[0].substr(1);
+                            lyric[relativeToAbsolute(element[0].split(":")[0], element[0].split(":")[1]).toFixed(8)] = element[1];
+                        });
+                        if (isNaN(Object.keys(lyric)[0]))
+                            throw "null";
+                    } catch (error) {
+                        lyric = null;
+                    }
+
+                    const album = tag.tags.album;
+                    const artist = tag.tags.artist;
+                    const track = tag.tags.track;
+                    const title = tag.tags.title;
+                    const genre = tag.tags.genre;
+                    const year = tag.tags.year;
+                    const albumArtist = tag.tags.aART;
+                    const lyrics = lyric;
+
+                    const input_album = document.createElement('input')
+                    input_album.setAttribute("type", "text")
+                    input_album.setAttribute("name", "album")
+                    input_album.setAttribute("id", "id_input_album")
+
+                    // input_album.innerHTML = album
+                    const input_artist = document.createElement('input')
+                    input_artist.setAttribute("type", "text")
+                    input_artist.setAttribute("name", "artist")
+                    input_artist.setAttribute("id", "id_input_artist")
+
+                    // input_artist.innerHTML = artist
+                    const input_track = document.createElement('input')
+                    input_track.setAttribute("type", "text")
+                    input_track.setAttribute("name", "track")
+                    input_track.setAttribute("id", "id_input_track")
+                    // input_track.innerHTML = track
+                    const input_title = document.createElement('input')
+                    input_title.setAttribute("type", "text")
+                    input_title.setAttribute("name", "title")
+                    input_title.setAttribute("id", "id_input_title")
+                    // input_title.innerHTML = title
+                    const input_genre = document.createElement('input')
+                    input_genre.setAttribute("type", "text")
+                    input_genre.setAttribute("name", "genre")
+                    input_genre.setAttribute("id", "id_input_genre")
+                    // input_genre.innerHTML = genre
+                    const input_year = document.createElement('input')
+                    input_year.setAttribute("type", "text")
+                    input_year.setAttribute("name", "year")
+                    input_year.setAttribute("id", "id_input_year")
+                    // input_year.innerHTML = year
+                    const input_albumArtist = document.createElement('input')
+                    input_albumArtist.setAttribute("type", "text")
+                    input_albumArtist.setAttribute("name", "albumartist")
+                    input_albumArtist.setAttribute("id", "id_input_albumArtist")
+                    // input_albumArtist.innerHTML = albumArtist
+                    const input_lyrics = document.createElement('input')
+                    input_lyrics.setAttribute("type", "text")
+                    input_lyrics.setAttribute("name", "lyrics")
+                    input_lyrics.setAttribute("id", "id_input_lyrics")
+                    // input_lyrics.innerHTML = lyrics
+                    const cover = document.createElement('input')
+                    cover.setAttribute("type", "file")
+                    cover.setAttribute("name", "cover")
+                    cover.setAttribute("id", "cover")
+                   const music = document.createElement('input')
+                    music.setAttribute("type", "file")
+                     music.setAttribute("name", "music")
+                    music.setAttribute("id", "music")
+
+                    const submit = document.createElement('input')
+                    submit.setAttribute("type", "submit")
+                    submit.setAttribute("name", "submit")
+                    submit.setAttribute("id", "submit")
+
+                    form.appendChild(input_album)
+                    form.appendChild(input_artist)
+                    form.appendChild(input_track)
+                    form.appendChild(input_title)
+                    form.appendChild(input_genre)
+                    form.appendChild(input_year)
+                    form.appendChild(input_albumArtist)
+                    form.appendChild(input_lyrics)
+                    form.appendChild(cover)
+                  form.appendChild(music)
+
+                    form.appendChild(submit)
+
+
+
+                    const id_input_album = document.getElementById('id_input_album').value = album
+                    const id_input_artist = document.getElementById('id_input_artist').value = artist
+                    const id_input_track = document.getElementById('id_input_track').value = track
+                    const id_input_title = document.getElementById('id_input_title').value = title
+                    const id_input_genre = document.getElementById('id_input_genre').value = genre
+                    const id_input_year = document.getElementById('id_input_year').value = year
+                    const id_input_albumArtist = document.getElementById('id_input_albumArtist').value = albumArtist
+                    // document.getElementById('id_input_lyrics').innerHTML=lyrics
+
+                  // console.log(id_input_album);
+                  // console.log(id_input_artist);
+                  // console.log(id_input_track);
+                  // console.log(id_input_title);
+                  // console.log(id_input_genre);
+                  // console.log(id_input_year);
+                  // console.log(id_input_albumArtist);
+
+
+                    // console.log(input_album);
+                    // console.log(input_artist);
+                    // console.log(input_track);
+                    // console.log(input_title);
+                    // console.log(input_genre);
+                    // console.log(input_year);
+                    // console.log(input_albumArtist);
+                    // console.log(input_lyrics);
+
+                    //console.log(album);
+                    //console.log(artist);
+                    //console.log(track);
+                    //console.log(title);
+                    //console.log(genre);
+                    //console.log(year);
+                    //console.log(albumArtist);
+                    //  console.log(lyrics);
+
+                }, onError: error => {
+                    console.log(error);
+                }
+            });
+        });
+            //document.getElementById("submit")=addEventListener('click',()=>{ })
+
+
+
+
+    </script>
+</body>
+
+</html>

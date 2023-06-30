@@ -1,0 +1,106 @@
+:root {
+  --anti-flash-white-98: hsl(0, 0%, 90%);
+  --anti-flash-white-99: hsl(0, 0%, 94%);
+  --left-from: 90%;
+  --left-width: 18%;
+  --left-height: 90%;
+  --right-left: 18%;
+  --right-width: 82%;
+  --right-height: 90%;
+  --bottom-from: 90%;
+  --bottom-width: 100vw;
+  --bottom-height: 10%;
+  --color-theme: hsl(88, 91%, 37%);
+  --color-theme-dim: hsla(88, 91%, 37%, 0.7);
+  --color-theme-dimer: hsla(88, 91%, 37%, 0.2);
+  --scroll-bar-visibility: "hidden";
+}
+
+* {
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
+  outline: none;
+  list-style: none;
+  text-decoration: none;
+  font-family: Arial, Helvetica, sans-serif;
+  color: black;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+
+a {
+  cursor: pointer;
+}
+
+.full-flex {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+#song-list-container {
+  overflow-x: hidden;
+  overflow-y: scroll;
+  height: 100vh;
+  width: 99.6vw;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+#song-list-container #song-list {
+  width: 99%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  row-gap: 10px;
+}
+#song-list-container #song-list .song {
+  width: 50vw;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-columns: 0.1fr 0.5fr 1fr 1fr 0.9fr 0.3fr;
+  align-items: center;
+  -moz-column-gap: 20px;
+       column-gap: 20px;
+  color: black;
+  background-color: transparent;
+  border-radius: 10px;
+  padding: 10px;
+  width: 100%;
+  transition: all 100ms ease;
+}
+#song-list-container #song-list .song:hover {
+  box-shadow: 0px 0px 10px -4px rgba(0, 0, 0, 0.25);
+  transform: scale(1.008);
+}
+#song-list-container #song-list .song * {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  height: 16px;
+  font-size: 13px;
+  color: inherit;
+  display: flex;
+  overflow: hidden;
+}
+#song-list-container #song-list .song .song-cover {
+  width: 40px;
+  height: 40px;
+  border-radius: 20%;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  justify-self: center;
+}
+#song-list-container #song-list .song .song-duration {
+  justify-content: center;
+}
+#song-list-container #song-list .song a:hover {
+  color: rgba(0, 0, 0, 0.64);
+}

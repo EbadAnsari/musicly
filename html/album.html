@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html name="musicly-album">
+    <head>
+        <link rel="stylesheet" href="./../css/album.css" />
+
+        <style>
+            #album-bar-container {
+                width: 100%;
+                height: 100vh;
+                /* background-color: slateblue; */
+                padding: 0px 10px 0px 10px;
+                margin-top: 5px;
+                margin-bottom: 5px;
+            }
+
+            #album-bar {
+                flex-wrap: wrap;
+                justify-content: center;
+                row-gap: 30px;
+                column-gap: 40px;
+                height: 100%;
+                overflow-x: hidden;
+                overflow-y: scroll;
+
+                /* padding: 1.25rem; */
+            }
+        </style>
+
+        <style id="style"></style>
+    </head>
+
+    <body>
+        <div id="album-bar-container">
+            <!-- <a class="back-icon" href="home.html" target="master-frame"></a> -->
+            <!-- <a class="show-all" id="to-album">Show All</a> -->
+            <!-- <div id="album-bar">
+			<a class="show-all" id="to-album" href="#">Show All</a>
+			<div id="album-bar">
+				<div class="album">
+					<div class="album-image">
+						<div class="play-button"></div>
+					</div>
+					<div class="album-info">
+						<div class="album-title">Unknown Al...</div>
+						<div class="album-artist-name">Unknown Arsdsdcsdcsdc...</div>
+					</div>
+				</div>
+			</div>
+		</div> -->
+            <div id="album-bar"></div>
+        </div>
+
+        <script>
+            // for (let i = 0; i < 30; i++) {
+            // 	document.getElementById("album-bar").appendChild(createAlbum("New Blood", "Yellow Claw", "sass/css/new blood.png", hsla));
+            // }
+
+            // setScrollBar(2, hsl(hsla, 0.045), hsl(hsla), "xy", (value) => {
+            // 	value.doc = document;
+            // 	value.scrollBar = document.getElementById("style");
+            // });
+        </script>
+    </body>
+</html>

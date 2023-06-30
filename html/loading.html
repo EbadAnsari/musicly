@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<script src="Loading.js"></script>
+	<style>
+		#tab {
+			width: 110px;
+			height: 110px;
+
+			border-radius: 20%;
+			position: relative;
+			left: 50%;
+			top: 50%;
+			transform: translate(-50%, -50%);
+
+			/* filter: blur(0px); */
+		}
+
+		body {
+			margin: 0px;
+			padding: 0px;
+
+			width: 100vw;
+			height: 100vh;
+		}
+
+		#container {
+			width: 100%;
+			height: 100%;
+			backdrop-filter: brightness(90%);
+		}
+
+		.box-one,
+		.box-two,
+		.box-three {
+			/* box-shadow: inset -3px -3px 10px -1px hsl(88, 91%, 15%); */
+		}
+	</style>
+</head>
+
+<body>
+	<div id="container">
+		<div id="tab">
+		</div>
+	</div>
+
+	<script>
+		const loading = new LoadingBoxes({
+			container: 'tab',
+			margin: 4,
+			dimension: 25,
+			duration: 5000,
+			color: 'hsl(88, 91%, 37%)',
+			borderRadius: 40,
+			target: 'box'
+		});
+
+		document.body.addEventListener('click', (event) => {
+			console.log(event.pageX);
+		})
+
+		// loading.kill();
+	</script>
+</body>
+
+</html>

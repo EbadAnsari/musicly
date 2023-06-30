@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html name="main">
+
+<head>
+
+	<link rel="shortcut icon" href="#">
+
+	<script async defer src="./../js/script.js"></script>
+
+	<link rel="stylesheet" href="./../css/main.css">
+	<link rel="stylesheet" href="./../css/play-pause.css">
+	<link rel="stylesheet" href="./../css/seekbar.css">
+
+	<link rel="stylesheet" href="./../css/right.css">
+	<link rel="stylesheet" href="./../css/left.css">
+	<link rel="stylesheet" href="./../css/playing song.css">
+
+	<title>MUSICLY</title>
+	<link rel="shortcut icon" id="icon" type="image/x-icon">
+
+
+	<script type="text/javascript" src="./../js/Loading.js"></script>
+	<script defer type="text/javascript" src="./../js/scrollbar.js"></script>
+
+	<script defer type="text/javascript" src="./../js/script-onLoadBody.js"></script>
+	<script defer type="text/javascript" src="./../js/event.js"></script>
+	<script defer type="text/javascript" src="./../js/external event.js"></script>
+	<script defer type="text/javascript" src="./../js/animation.js"></script>
+
+
+	<style id="style"></style>
+</head>
+
+<body>
+	<div id="left-pannel">
+		<a id="app-title" target="master-frame" href="./../html/home.html">MUSICLY</a>
+		<div id="tab">
+			<a id="tab-home" name="home" href="./../html/home.html" target="master-frame">Home</a>
+			<a id="tab-song" name="songs" href="./../html/song.html" target="master-frame">All songs</a>
+			<a id="tab-artist" href="./../html/artist.html" name="artist" target="master-frame">Artist</a>
+			<a id="tab-album" href="./../html/album.html" name="album" target="master-frame">Album</a>
+		</div>
+	</div>
+
+
+	<div id="right-pannel">
+		<iframe id="right-frame" title="frame1" name="master-frame" src="./../html/home.html" scrolling="no"></iframe>
+	</div>
+
+	<div id="bottom-pannel">
+		<div id="playing">
+			<div id="cover" class="cover-image"></div>
+			<div class="name-artist">
+				<label id="name"></label>
+				<label id="artist"></label>
+			</div>
+		</div>
+		<div class="full-flex" style="gap: 20px;">
+			<div class="media-button flex-row">
+				<svg viewBox="-50 -50 366 519" class="previous">
+					<path d="M96.2,209.5L266,379.3L238.4,407c-16,16-41.9,16-57.9,0L39.6,266L12,238.4c-16-16-16-41.9,0-57.9l27.6-27.6L180.5,12
+							c16-16,41.9-16,57.9,0L266,39.6L96.2,209.5z" />
+				</svg>
+				<div class="play-pause">
+					<div class="fix-bar"></div>
+					<div class="moving-bar">
+						<div class="moving-bar-1"></div>
+						<div class="moving-bar-2"></div>
+					</div>
+				</div>
+				<svg viewBox="-50 -50 366 519" class="next">
+					<path d="M96.2,209.5L266,379.3L238.4,407c-16,16-41.9,16-57.9,0L39.6,266L12,238.4c-16-16-16-41.9,0-57.9l27.6-27.6L180.5,12
+							c16-16,41.9-16,57.9,0L266,39.6L96.2,209.5z" />
+				</svg>
+			</div>
+
+
+			<div class="seekbar-time">
+				<label for="master-seekbar" class="left-label current-time">00:00</label>
+				<div class="container" style="--width-seekbar: 40vw;">
+					<audio id="audio"></audio>
+					<div class="seekbar-background"></div>
+					<input type="range" min="0" max="100" value="0" step="0.01" class="thumb pointer master-seekbar">
+					<div class="range"></div>
+				</div>
+				<label for="master-seekbar" class="right-label duration">00:00</label>
+			</div>
+		</div>
+		<div class="full-flex" style="gap:30px;">
+			<div class="full-flex">
+				<svg viewBox="0 0 1000 1000" id="repeat-icon">
+					<g id="repeat-one">
+						<path class="st0"
+							d="M911.8,522.2c37.6,0,66.3,33.4,60.8,70.6c-5.9,39.6-16.7,78.2-32.4,115.4c-24.1,56.9-58.5,108-102.4,151.8
+						c-43.9,43.8-95,78.3-151.8,102.4C627,987.3,564.5,1000,500,1000c-69.3,0-136.1-14.5-198.7-43.2c-44-20.2-84.2-46.4-119.9-78.5
+						c-5.3-4.8-13.3-4.7-18.5,0.1l-95.2,88c-10,9.3-26-0.2-22.6-13.5c30.8-119.2,42.3-269.4,39.6-395.2c-0.3-12.4,14.8-18.7,23.5-9.9
+						c88.2,89.7,203.8,186.4,310.6,247.7c11.9,6.8,7.5,24.9-6.1,25.6l-44.8,2.3c-14.5,0.8-18.1,20.7-4.6,26.3
+						c42.9,17.9,89.3,27.4,136.7,27.4c177.8,0,325.5-131.5,351-302.3C855.5,544.7,881.3,522.2,911.8,522.2L911.8,522.2z" />
+						<path class="st0" d="M891.7,452.2C803.5,362.4,688,265.8,581.2,204.5c-11.8-6.8-7.5-24.9,6.2-25.6l44.8-2.3
+						c14.5-0.8,18.1-20.7,4.6-26.4c-42.9-17.9-89.3-27.4-136.7-27.4c-177.8,0-325.5,131.4-351,302.3c-4.5,30.2-30.3,52.6-60.8,52.6l0,0
+						c-37.6,0-66.3-33.4-60.8-70.6c5.9-39.6,16.7-78.2,32.4-115.4c24.1-56.9,58.5-108,102.4-151.9C206,96.1,257.1,61.6,314,37.6
+						C373,12.6,435.5,0,500,0c69.3,0,136.1,14.5,198.7,43.2c44,20.1,84.2,46.5,119.9,78.5c5.3,4.8,13.3,4.7,18.5-0.1l95.2-87.9
+						c10-9.3,26,0.2,22.6,13.5c-30.8,119.2-42.3,269.4-39.6,395.2C915.5,454.7,900.4,461,891.7,452.2z" />
+						<path class="st0" id="one-repeat" d="M541.2,670.2h-26.7c-9.7,0-17.6-7.9-17.6-17.6V409.1c0-9.7-7.9-17.6-17.6-17.6h-20.5c-9.7,0-17.6-7.9-17.6-17.6
+					v-26.5c0-9.7,7.9-17.6,17.6-17.6h82.5c9.7,0,17.6,7.9,17.6,17.6v305.1C558.9,662.3,551,670.2,541.2,670.2z" />
+					</g>
+					<g id="no-repeat">
+						<path class="st0" d="M914.91,648.14L914.91,648.14c36.83,13.48,53.2,56.55,34.46,91.01c-36.17,66.51-87.07,123.97-149.77,168.56
+						c-84.9,60.38-185,92.29-289.5,92.29c-67.47,0-132.95-13.23-194.64-39.32c-59.55-25.19-113.01-61.23-158.91-107.13
+						c-45.9-45.89-81.94-99.36-107.13-158.91C23.33,632.96,10.1,567.47,10.1,500s13.23-132.96,39.32-194.64
+						c25.19-59.55,61.23-113.01,107.13-158.91c45.9-45.9,99.36-81.94,158.91-107.13C377.14,13.23,442.63,0,510.1,0
+						c72.5,0,142.45,15.19,207.91,45.16c47.14,21.58,90.05,49.9,128.08,84.5c4.02,3.66,10.16,3.65,14.15-0.04L972.31,26.07
+						c7.74-7.16,19.98,0.33,17.19,10.49c-35.58,129.71-48.32,298.02-44.63,436.07c0.25,9.54-11.31,14.41-17.96,7.57
+						c-96.26-99.04-225.63-207.49-343.3-272.61c-9.23-5.11-6.04-19.08,4.49-19.63l76.47-3.96c10.86-0.56,13.77-15.28,3.94-19.92
+						c-49.05-23.13-103.08-35.52-158.41-35.52c-204.81,0-371.45,166.63-371.45,371.45S305.29,871.45,510.1,871.45
+						c136.84,0,261.96-76.02,326.3-193.79C851.65,649.74,885.04,637.21,914.91,648.14z" />
+					</g>
+				</svg>
+			</div>
+
+			<div class="full-flex">
+				<svg id="soundControl" viewBox="0 0 230 230">
+					<g>
+						<path class="st0" id="icon-body" d="M131.78,9.39v189.28c0,8.09-9.57,12.38-15.61,6.99l-60.9-54.39c-3.6-3.22-9.32-0.66-9.32,4.17v0
+						c0,3.09-2.5,5.59-5.59,5.59H19.84C8.88,161.04,0,152.16,0,141.2V66.86C0,55.9,8.88,47.02,19.84,47.02h20.51
+						c3.09,0,5.59,2.5,5.59,5.59v0c0,4.83,5.72,7.39,9.32,4.17l60.9-54.39C122.21-2.99,131.78,1.29,131.78,9.39z" />
+						<!-- #point-one id bar-one -->
+						<path class="st1" id="point-one" d="M151,77.33c20.86,25.58,0,53.39,0,53.39" />
+						<!-- #point-five id bar-two -->
+						<path class="st1" id="point-five" d="M176.13,57.92c36.02,44.19,0,92.21,0,92.21" />
+						<!-- #point-nine id bar-three -->
+						<path class="st1" id="point-nine" d="M199.83,30.35c57.56,70.61,0,147.36,0,147.36" />
+						<line class="point-null" x1="155.8" y1="80" x2="203.9" y2="128.1" />
+						<line class="point-null" x1="203.9" y1="80" x2="155.8" y2="128.1" />
+					</g>
+				</svg>
+
+
+				<div class="seekbar-time">
+					<label class="left-label"></label>
+					<div class="container" style="--width-seekbar: 10vw;">
+						<div class="seekbar-background"></div>
+						<input type="range" min="0" max="100" value="80" step="0.01" class="thumb pointer" id="volume">
+						<div class="range" id="volumeRange"></div>
+					</div>
+					<label for="volume" id="volumePercentage" class="right-label">000%</label>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<div class="seekbar-time" id="full-seekbar">
+		<div class="container" style="--width-seekbar: 100vw;">
+			<div class="seekbar-background seekbar-height"></div>
+			<input type="range" min="0" max="100" value="0" step="0.01" class="thumb thumb-no-visible">
+			<div class="range seekbar-height" id="secondary-Seekbar"></div>
+		</div>
+	</div>
+
+
+	<div id="arrow">
+		<div id="left"></div>
+		<div id="right"></div>
+	</div>
+
+
+	<div id="secondary-cover">
+		<div id="playing-cover">
+			<div id="img" class="cover-image"></div>
+			<svg id="svg">
+				<circle cx="0" cy="0" r="0" id="circle"></circle>
+			</svg>
+		</div>
+		<!-- <div id="seconday-name-artist">
+			<label id="seconday-name">Lean On</label>
+			<label id="seconday-artist">DJ Snake</label>
+		</div> -->
+	</div>
+
+	<div id="main-body">
+		<div id="song-cover-blured"></div>
+
+		<div id="details">
+			<div id="song-info">
+				<div id="cover-photo"></div>
+				<div id="song-title-artist">
+					<div id="song-title">DJ Snake, Major Lazer</div>
+					<div id="song-artist">DJ Snake, Major Lazer, MOssadfsdsdvjjj</div>
+				</div>
+			</div>
+
+			<div id="lyrics"></div>
+		</div>
+
+		<div id="action-bar">
+			<div class="media-button">
+				<svg viewBox="-50 -50 366 519" class="previous">
+					<path d="M96.2,209.5L266,379.3L238.4,407c-16,16-41.9,16-57.9,0L39.6,266L12,238.4c-16-16-16-41.9,0-57.9l27.6-27.6L180.5,12
+											c16-16,41.9-16,57.9,0L266,39.6L96.2,209.5z" />
+				</svg>
+				<div class="play-pause">
+					<div class="fix-bar"></div>
+					<div class="moving-bar">
+						<div class="moving-bar-1"></div>
+						<div class="moving-bar-2"></div>
+					</div>
+				</div>
+				<svg viewBox="-50 -50 366 519" class="next">
+					<path d="M96.2,209.5L266,379.3L238.4,407c-16,16-41.9,16-57.9,0L39.6,266L12,238.4c-16-16-16-41.9,0-57.9l27.6-27.6L180.5,12
+											c16-16,41.9-16,57.9,0L266,39.6L96.2,209.5z" />
+				</svg>
+			</div>
+
+			<div class="seekbar-time">
+				<label for="master-seekbar" class="left-label current-time">00:00</label>
+				<div class="container" style="--width-seekbar: 80vw;">
+					<div class="seekbar-background"></div>
+					<input type="range" min="0" max="100" value="0" step="0.001" class="thumb pointer master-seekbar">
+					<div class="range"></div>
+				</div>
+				<label for="master-seekbar" class="right-label duration">00:00</label>
+			</div>
+		</div>
+
+		<div id="down">
+			<svg viewBox="0 0 930.26 1289.89">
+				<line class="line" x1="200" y1="644.94" x2="730.26" y2="1089.89" />
+				<line class="line" x1="200" y1="644.94" x2="730.26" y2="200" />
+			</svg>
+		</div>
+
+	</div>
+
+</body>
+
+</html>

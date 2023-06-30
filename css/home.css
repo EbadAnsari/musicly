@@ -1,0 +1,73 @@
+:root {
+  --anti-flash-white-98: hsl(0, 0%, 90%);
+  --anti-flash-white-99: hsl(0, 0%, 94%);
+  --left-from: 90%;
+  --left-width: 18%;
+  --left-height: 90%;
+  --right-left: 18%;
+  --right-width: 82%;
+  --right-height: 90%;
+  --bottom-from: 90%;
+  --bottom-width: 100vw;
+  --bottom-height: 10%;
+  --color-theme: hsl(88, 91%, 37%);
+  --color-theme-dim: hsla(88, 91%, 37%, 0.7);
+  --color-theme-dimer: hsla(88, 91%, 37%, 0.2);
+  --scroll-bar-visibility: "hidden";
+}
+
+* {
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
+  outline: none;
+  list-style: none;
+  text-decoration: none;
+  font-family: Arial, Helvetica, sans-serif;
+  color: black;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+
+a {
+  cursor: pointer;
+}
+
+.full-flex {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+#right-container {
+  width: 100vw;
+  height: 100vh;
+  padding: 10px;
+}
+#right-container #feature {
+  position: absolute;
+  top: 310px;
+  left: 30px;
+  width: -moz-max-content;
+  width: max-content;
+  color: black;
+  padding-top: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+#right-container #feature :first-child {
+  font-size: 25px;
+  font-weight: bold;
+}
+#right-container #feature :last-child {
+  font-size: 10px;
+}

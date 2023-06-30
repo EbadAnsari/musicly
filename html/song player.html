@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<link rel="stylesheet" href="./../css/seekbar.css">
+	<script async type="text/javascript" src="scrollbar.js"></script>
+	<style>
+		* {
+			padding: 0px;
+			margin: 0px;
+			user-select: none;
+		}
+
+		:root {
+			--font-size: 20px;
+			--disabled-lyric: rgba(226, 226, 226, 0.21);
+		}
+
+		#main-body {
+			width: 100vw;
+			height: 100vh;
+			position: fixed;
+			top: 0%;
+			background-color: yellowgreen;
+
+			transition: top 100ms ease;
+		}
+
+		#song-cover-blured {
+			width: 100%;
+			height: 100%;
+
+			background-image: url("images/raster/Major Lazer - Peace Is The Mission (Extended).jpg");
+			background-position: center;
+			background-size: cover;
+			background-repeat: no-repeat;
+			filter: blur(20px);
+		}
+
+		#details {
+			position: absolute;
+			left: 0px;
+			top: 0px;
+
+			width: 100vw;
+			height: 100vh;
+		}
+
+		#song-info {
+			position: absolute;
+			top: 65%;
+			left: 2%;
+
+			display: flex;
+
+			justify-content: center;
+			align-items: center;
+			gap: 30px;
+		}
+
+		#cover-photo {
+			width: 150px;
+			height: 150px;
+
+			border-radius: 50%;
+
+			background-image: url("images/raster/Major Lazer - Peace Is The Mission (Extended).jpg");
+			background-position: center;
+			background-size: contain;
+			background-repeat: no-repeat;
+			box-shadow: 0px 10px 20px -1px rgb(0, 0, 0);
+		}
+
+		#song-title,
+		#song-artist {
+			color: white;
+			font-size: 20px;
+			font-family: Verdana, Geneva, Tahoma, sans-serif;
+		}
+
+		#song-title {
+			font-size: 30px;
+			font-weight: bold;
+		}
+
+		#lyrics {
+			position: absolute;
+			left: 50%;
+			top: 8%;
+
+			width: 40%;
+			height: 80%;
+			border-radius: 30px;
+			overflow: hidden scroll;
+			padding: 20px;
+
+			display: flex;
+			flex-direction: column;
+			/* row-gap: 10px; */
+
+			scroll-behavior: smooth;
+
+			background-color: rgba(5, 5, 5, 0.33);
+		}
+
+		.lyric {
+			color: var(--disabled-lyric);
+			font-family: Verdana, Geneva, Tahoma, sans-serif;
+			font-size: var(--font-size);
+			cursor: pointer;
+			padding: 10px;
+
+			transition: all 300ms ease;
+		}
+
+		.seekbar-time {
+			position: absolute;
+			top: 94%;
+			left: 50%;
+
+			transform: translate(-50%);
+		}
+
+		.line {
+			fill: none;
+			stroke: #ffffff;
+			stroke-width: 200;
+			stroke-linecap: round;
+			stroke-miterlimit: 10;
+		}
+
+		#down {
+			position: fixed;
+			top: 4%;
+			left: 2%;
+			z-index: 10;
+		}
+
+		#down svg {
+			width: 20px;
+			height: 20px;
+
+			transform: rotate(-90deg);
+		}
+
+		.left-label,
+		.right-label {
+			font-size: 13px;
+			font-weight: 600;
+			color: white;
+		}
+
+		.left-label {
+			margin-right: 30px;
+		}
+
+		.right-label {
+			margin-left: 30px;
+		}
+	</style>
+
+	<script>
+
+		let lyrics = {
+			0: "Lean On",
+			10.41: "Do you recall, not long ago",
+			12.67: "We would walk on the sidewalk",
+			15.14: "Innocent, remember?",
+			17.36: "All we did was care for each other",
+			20.4: "But the night was warm",
+			21.89: "We were bold and young",
+			25.36: "All around the wind blows",
+			27.37: "We would only hold on to let go",
+			29.86: "Blow a kiss, fire a gun",
+			32.36: "We need someone to lean on",
+			34.62: "Blow a kiss, fire a gun",
+			37.12: "All we need is somebody to lean on",
+			39.62: "Blow a kiss, fire a gun",
+			42.15: "We need someone to lean on",
+			44.36: "Blow a kiss, fire a gun",
+			46.62: "All we need is somebody to lean on",
+			69.12: "What will we do when we get old?",
+			71.65: "Will we walk down the same road?",
+			74.12: "Will you be there by my side?",
+			76.62: "Standing strong as the waves roll over",
+			79.61: "When the nights are long",
+			81.11: "Longing for you to come home",
+			83.9: "All around the wind blows",
+			86.37: "We would only hold on to let go",
+			88.12: "Blow a kiss, fire a gun",
+			91.11: "We need someone to lean on",
+			93.39: "Blow a kiss, fire a gun",
+			96.11: "All we need is somebody to lean on",
+			98.86: "Blow a kiss, fire a gun",
+			101.14: "We need someone to lean on",
+			103.14: "Blow a kiss, fire a gun",
+			105.62: "All we need is somebody to lean on",
+			115.39: "All we need is somebody to lean on",
+			153.14: "Blow a kiss, fire a gun",
+			154.88: "We need someone to lean on",
+			157.38: "Blow a kiss, fire a gun",
+			159.65: "All we need is somebody to lean on",
+			162.4: "Blow a kiss, fire a gun",
+			165.16: "We need someone to lean on",
+			167.36: "Blow a kiss, fire a gun",
+			169.4: "All we need is somebody to lean on",
+		};
+
+		const displayLyrics = (lyrics) => {
+			for (let x in lyrics) {
+				let label = document.createElement("label");
+				label.setAttribute("class", "lyric")
+				label.setAttribute("time", x);
+
+				label.innerText = lyrics[x];
+
+				label.addEventListener("click", () => {
+					audio.currentTime = x;
+				});
+				cnt.appendChild(label);
+			}
+		}
+
+		const absoluteTimeToRelative = (time) => {
+			let second = parseInt(time % 60);
+			let minute = parseInt(time / 60);
+			let hours = parseInt(minute / 60 % 60);
+
+			return `${hours ? hours + ":" : ""}${minute > 9 ? minute : "0" + minute}:${second > 9 ? second : "0" + second}`;
+		}
+
+		function colorLyrics(labelArray, currentTime) {
+			if (labelArray.length == 0)
+				return 0;
+
+			let first = labelArray.shift();
+			let boolean = colorLyrics(labelArray, currentTime);
+
+			if (!boolean && first.getAttribute("time") > currentTime) {
+				first.style.padding = "10px"
+				first.style.fontWeight = "normal";
+				first.style.fontSize = "var(--font-size)"
+				first.style.color = "var(--disabled-lyric)";
+				return 0;
+			} else if (first.getAttribute("time") <= currentTime && !boolean) {
+				first.style.fontWeight = "bold";
+				first.style.color = "white";
+				first.style.padding = "20px 0px 20px 3px";
+				first.style.fontSize = "calc(var(--font-size) + 15px)"
+				return boolean + 1;
+			}
+
+			first.style.padding = "10px"
+			first.style.fontWeight = "normal";
+			first.style.color = "white";
+			first.style.fontSize = "var(--font-size)"
+			return boolean + 1;
+		}
+
+		function percentageToValue(per, max) {
+			return parseFloat((parseFloat(per) / 100) * parseFloat(max));
+		} function valueToPercentage(val, max) {
+			return parseFloat((parseFloat(val) / parseFloat(max)) * 100);
+		}
+	</script>
+
+
+	<style id="style"></style>
+</head>
+
+<body>
+	<div id="main-body">
+		<div id="song-cover-blured"></div>
+
+		<div id="details">
+			<div id="song-info">
+				<div id="cover-photo"></div>
+				<div id="song-title-artist">
+					<div id="song-title">Lean On</div>
+					<div id="song-artist">DJ Snake, Major Lazer, MO</div>
+				</div>
+			</div>
+
+			<div id="lyrics"></div>
+		</div>
+
+		<div class="seekbar-time">
+			<label for="master-seekbar" class="left-label" id="currentTime">00:00</label>
+			<div class="container" style="--width-seekbar: 80vw;">
+				<audio id="audio" src="music/Major Lazer, DJ Snake, MØ - Lean On.m4a" autoplay loop></audio>
+				<div class="seekbar-background"></div>
+				<input type="range" min="0" max="100" value="0" step="0.01" class="thumb pointer master-seekbar">
+				<div class="range"></div>
+			</div>
+			<label for="master-seekbar" class="right-label" id="duration">00:00</label>
+		</div>
+
+	</div>
+
+	<div id="down">
+		<svg viewBox="0 0 930.26 1289.89">
+			<line class="line" x1="200" y1="644.94" x2="730.26" y2="1089.89" />
+			<line class="line" x1="200" y1="644.94" x2="730.26" y2="200" />
+		</svg>
+	</div>
+
+	<script>
+
+		document.getElementById("down").addEventListener("click", () => {
+			console.log("Click");
+			document.getElementById("main-body").style.top = "100%";
+		});
+
+		const audio = document.getElementById("audio");
+		let cnt = document.getElementById("lyrics");
+
+		let invoke = true;
+		const masterSeekbar = Array.from(document.getElementsByClassName("master-seekbar"));
+
+		console.log(masterSeekbar);
+
+		masterSeekbar.forEach(element => {
+			element.addEventListener("input", () => {
+				element.nextElementSibling.style.width = element.value + "%";
+				document.getElementById("currentTime").innerText = absoluteTimeToRelative(percentageToValue(element.value, audio.duration));
+				let num = colorLyrics(Array.from(cnt.children), percentageToValue(element.value, audio.duration));
+				if (lastNum != num) {
+					cnt.scrollTo(0, ((lastNum = num) - 6) * 44);
+				}
+			});
+
+			element.addEventListener("mousedown", () => {
+				invoke = false;
+			}); element.addEventListener("mouseup", () => {
+				invoke = true;
+				audio.currentTime = percentageToValue(element.value, audio.duration);
+			});
+		});
+
+		// masterSeekbar.addEventListener("change", () => {
+		// 	masterSeekbar.nextElementSibling.style.width = masterSeekbar.value + "%";
+		// 	document.getElementById("currentTime").innerText = absoluteTimeToRelative(percentageToValue(masterSeekbar.value, audio.duration));
+		// 	audio.currentTime = percentageToValue(masterSeekbar.value, audio.duration);
+		// });
+
+		audio.addEventListener("loadedmetadata", () => {
+			document.getElementById("duration").innerText = absoluteTimeToRelative(audio.duration);
+		});
+
+		displayLyrics(lyrics);
+
+
+		let lastNum = 0;
+		audio.addEventListener("timeupdate", (event) => {
+			if (invoke) {
+				let num = colorLyrics(Array.from(document.getElementById("lyrics").children), audio.currentTime);
+				if (lastNum != num) {
+					cnt.scrollTo(0, ((lastNum = num) - 6) * 44);
+				}
+				masterSeekbar.forEach(element => {
+					element.value = valueToPercentage(audio.currentTime, audio.duration);
+					element.nextElementSibling.style.width = `${element.value}%`;
+				});
+				document.getElementById("currentTime").innerText = absoluteTimeToRelative(audio.currentTime);
+			}
+		});
+
+		setScrollBar(0, "white", "white", "xy", (value) => {
+			value.doc = document;
+			value.scrollBar = document.getElementById("style");
+		});
+	</script>
+</body>
+
+</html>

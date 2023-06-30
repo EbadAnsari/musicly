@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+
+<html name="musicly-song">
+
+<head>
+	<link rel="stylesheet" href="./../css/song.css">
+
+	<!-- <script async type="text/javascript" src="create elements.js"></script> -->
+
+
+	<style>
+		#song-list-container {
+			height: 100vh;
+		}
+	</style>
+</head>
+
+<body>
+
+	<!-- div.song is a single songElement -->
+	<!-- div.song-cover holdes the song cover picture -->
+	<!-- div.song-title holdes the song title -->
+	<!-- div.song-artisr holdes the song artisr picture -->
+	<!-- div.song-album holdes the song album picture -->
+	<!-- div.song-genre holdes the song genre picture -->
+	<!-- div.song-duration holdes the song duration picture -->
+
+	<!-- <div class="song">
+		<div class="song-cover"></div>
+		<div class="song-title">Lean On</div>
+		<a class="song-artist">DJ Snake, Major Lazer, MO</a>
+		<div class="song-album">Lean On</div>
+		<a class="song-genre">Moombathon</a>
+		<div class="song-duration">03:58</div>
+	</div> -->
+
+	<div id="song-list-container">
+		<div id="song-list"></div>
+	</div>
+
+	<script>
+
+		// function createSong(songInfo) {
+		// 	let song = document.createElement("div");
+
+		// 	let songCover = document.createElement("div");
+		// 	let songTitle = document.createElement("div");
+		// 	let songArtist = document.createElement("a");
+		// 	let songAlbum = document.createElement("div");
+		// 	let songGenre = document.createElement("a");
+		// 	let songDuration = document.createElement("div");
+
+		// 	song.setAttribute("class", "song");
+
+		// 	songCover.setAttribute("class", "song-cover");
+		// 	songTitle.setAttribute("class", "song-title");
+		// 	songArtist.setAttribute("class", "song-artist");
+		// 	songAlbum.setAttribute("class", "song-album");
+		// 	songGenre.setAttribute("class", "song-genre");
+		// 	songDuration.setAttribute("class", "song-duration");
+
+		// 	songArtist.setAttribute("href", "#");
+		// 	songGenre.setAttribute("href", "#");
+
+		// 	songTitle.innerText = songInfo.title;
+		// 	songArtist.innerText = songInfo.artist;
+		// 	songAlbum.innerText = songInfo.album;
+		// 	songGenre.innerText = songInfo.genre;
+		// 	songDuration.innerText = songInfo.duration;
+
+		// 	song.appendChild(songCover);
+		// 	song.appendChild(songTitle);
+		// 	song.appendChild(songArtist);
+		// 	song.appendChild(songAlbum);
+		// 	song.appendChild(songGenre);
+		// 	song.appendChild(songDuration);
+
+		// 	return song;
+		// }
+
+		// for (let i = 0; i < 6; i++)
+		// 	document.getElementById("song-list").appendChild(createSong({ title: "Lean On", artist: "DJ Snake, Major Lazer, MO", album: "Peace Is The Mission", genre: "Moombathon", duration: "03:13" }));
+
+		// let song = [
+		// 	{ title: 'Lean On', artist: ['Major Lazer', 'DJ Snake', 'MO'], album: 'Peace Is The Mission', genre: 'Moombathon', duration: '03:13' },
+		// 	{ title: 'Lean On', artist: ['Major Lazer', 'MO'], album: 'Peace Is The Mission', genre: 'Moombathon', duration: '03:14' },
+		// 	{ title: 'Lean On', artist: ['Major Lazer', 'DJ Snake', 'MO'], album: 'Peace Is The Mission', genre: 'Moombathon', duration: '03:15' },
+		// 	{ title: 'Lean On', artist: ['Major Lazer', 'DJ Snake', 'MO'], album: 'Peace Is The Mission', genre: 'Moombathon', duration: '03:16' },
+		// 	{ title: 'Lean On', artist: ['Major Lazer', 'DJ Snake'], album: 'Peace Is The Mission', genre: 'Moombathon', duration: '03:17' },
+		// 	{ title: 'Lean On', artist: ['Major Lazer', 'DJ Snake', 'MO'], album: 'Peace Is The Mission', genre: 'Moombathon', duration: '03:13' },
+		// ];
+
+	</script>
+
+</body>
+
+</html>

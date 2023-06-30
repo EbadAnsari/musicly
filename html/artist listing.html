@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html name="musicly-artist-listing">
+
+<head>
+    <link rel="stylesheet" href="../css/song.css">
+    <link rel="stylesheet" href="../css/artist.css">
+
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+    <!-- <script>
+        function url(str) {
+            return `url('${str}')`;
+        }
+        const createSong = (songInfo, number, loadFrom) => {
+            let anchor = true;
+            let song = document.createElement('div');
+
+            let songCover = document.createElement('div');
+            let songTitle = document.createElement('div');
+            let songArtist = document.createElement('a');
+            let songAlbum = document.createElement('a');
+            let songGenre = document.createElement('a');
+            let songDuration = document.createElement('div');
+
+            song.setAttribute('class', 'song');
+            song.dataset.title = songInfo.title;
+            song.dataset.artist = songInfo.artist;
+            song.dataset.album = songInfo.album;
+            song.dataset.genre = songInfo.genre;
+            song.dataset.duration = songInfo.duration;
+            song.dataset.path = songInfo.path;
+            song.dataset.songNumber = number;
+
+            songCover.setAttribute('class', 'song-cover');
+            songTitle.setAttribute('class', 'song-title');
+            songArtist.setAttribute('class', 'song-artist');
+            songAlbum.setAttribute('class', 'song-album');
+            songGenre.setAttribute('class', 'song-genre');
+            songDuration.setAttribute('class', 'song-duration');
+
+            songArtist.setAttribute('href', '#');
+
+            songAlbum.setAttribute('href', 'album listing.html');
+            songAlbum.setAttribute('target', 'master-frame');
+            songAlbum.addEventListener('click', () => {
+                clicked.album = songInfo;
+                anchor = false;
+            });
+
+            [songAlbum, songArtist, songGenre].forEach((element) => {
+                element.addEventListener('mousedown', () => {
+                    anchor = false;
+                });
+                element.addEventListener('mouseup', () => {
+                    anchor = true;
+                });
+            });
+
+            songGenre.setAttribute('href', '#');
+
+            const artist = songInfo.artist.join(', ')
+
+            songCover.style.backgroundImage = url(songInfo.cover);
+            songTitle.appendChild(document.createTextNode(songInfo.title));
+            songArtist.appendChild(document.createTextNode(artist.substr(0, 37) + (artist.length >= 40 ? '...' : '')));
+            songAlbum.appendChild(document.createTextNode(songInfo.album));
+            songGenre.appendChild(document.createTextNode(songInfo.genre));
+            songDuration.appendChild(document.createTextNode(absoluteTimeToRelative(songInfo.duration)));
+
+            song.appendChild(songCover);
+            song.appendChild(songTitle);
+            song.appendChild(songArtist);
+            song.appendChild(songAlbum);
+            song.appendChild(songGenre);
+            song.appendChild(songDuration);
+
+            song.addEventListener('click', () => {
+                if (anchor) {
+                    if (stack.song != null || stack.song != undefined) {
+                        stack.song.style.backgroundColor = 'transparent';
+                        stack.song.style.color = 'black';
+                    }
+                    currentSong = song.dataset.songNumber;
+                    audio.src = songInfo['path'];
+                    song.style.color = 'white';
+                    song.style.backgroundColor = hsl(songInfo.color);
+                    audio.play();
+                    stack.song = song;
+
+                    switch (loadFrom) {
+                        case 'songs':
+                            currentSongList = songs;
+                            break;
+                        case 'album-listing':
+                            currentSongList = albums;
+                            break;
+
+                        default:
+                            break;
+                    }
+                    totalSongs = currentSongList.length;
+                }
+            });
+
+            if (clicked.song && songInfo.title == clicked.song.title && songInfo.artist == clicked.song.artist && songInfo.album == clicked.song.album) {
+                song.style.backgroundColor = hsl(songInfo.color);
+                song.style.color = 'white';
+                stack.song = song;
+            }
+
+            return song;
+        }
+    </script> -->
+
+    <script src="../js/script.js"></script>
+
+    <style id="style"></style>
+</head>
+
+<body>
+    <div id="right-container">
+        <div id="artist-info-bar">
+            <div id="artist-cover"></div>
+            <div id="artist-name">Major Lazer</div>
+        </div>
+    </div>
+
+    <div id="song-list-container">
+        <div id="song-list">
+            <!-- <div class="song">
+                <div class="song-cover"></div>
+                <div class="song-title">Lean On</div>
+                <div class="song-artist">Major Lazer</div>
+                <div class="song-album">Major Lazer</div>
+                <div class="song-genre">Trap</div>
+                <div class="song-duration">03:59</div>
+            </div> -->
+        </div>
+    </div>
+
+    <!-- <script>
+        document.getElementById("song-list").appendChild(createSong({
+            title: "Lean On",
+            artist: "Major Lazer",
+            genre: "Trap",
+            cover: "hello/sd.png",
+            duration: 250
+        }))
+    </script> -->
+
+</body>
+
+</html>

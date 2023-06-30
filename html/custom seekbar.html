@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<style>
+		:root {
+			--main-height: 10px;
+			--width-seekbar: 10vw;
+		}
+
+		* {
+			padding: 0px;
+			margin: 0px;
+			outline: none;
+		}
+
+		#seekbar-time {
+			display: flex;
+			flex-direction: row;
+		}
+
+		.container {
+			position: relative;
+			width: var(--width-seekbar);
+			height: var(--main-height);
+		}
+
+		.range {
+			position: absolute;
+			left: 0%;
+			top: 50%;
+			transform: translateY(-50%);
+			height: 4px;
+			background-color: #66B509;
+		}
+
+		.seekbar-background {
+			position: absolute;
+			left: 0%;
+			top: 50%;
+			transform: translateY(-50%);
+			width: 100%;
+			height: 4px;
+			background-color: rgb(237, 237, 237);
+		}
+
+		.thumb {
+			position: absolute;
+			left: 0px;
+			top: 50%;
+			transform: translateY(-50%);
+			width: 100%;
+			height: 0px;
+			appearance: none;
+			cursor: pointer;
+		}
+
+		.thumb::-webkit-slider-thumb {
+			appearance: none;
+			border-radius: 50%;
+			width: var(--main-height);
+			height: var(--main-height);
+			background-color: #66B509;
+		}
+
+		.thumb-no-visible::-webkit-slider-thumb {
+			visibility: hidden;
+		}
+
+		#currentTime,
+		#duration {
+			pointer-events: none;
+			margin-right: 10px;
+			margin-left: 10px;
+		}
+	</style>
+
+</head>
+
+<body>
+	<div id="seekbar-time">
+		<div class="container">
+			<div class="seekbar-background"></div>
+			<div class="range" id="increaseRange"></div>
+			<input type="range" min="0" max="100" value="0" step="0.01" class="thumb" id="master-seekbar">
+		</div>
+	</div>
+
+	<script>
+		document.getElementById("master-seekbar").addEventListener("input", () => {
+			document.getElementById("increaseRange").style.width = document.getElementById("master-seekbar").value + "%";
+		});
+	</script>
+
+</body>
+
+</html>

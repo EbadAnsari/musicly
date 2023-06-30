@@ -1,0 +1,275 @@
+:root {
+  --anti-flash-white-98: hsl(0, 0%, 90%);
+  --anti-flash-white-99: hsl(0, 0%, 94%);
+  --left-from: 90%;
+  --left-width: 18%;
+  --left-height: 90%;
+  --right-left: 18%;
+  --right-width: 82%;
+  --right-height: 90%;
+  --bottom-from: 90%;
+  --bottom-width: 100vw;
+  --bottom-height: 10%;
+  --color-theme: hsl(88, 91%, 37%);
+  --color-theme-dim: hsla(88, 91%, 37%, 0.7);
+  --color-theme-dimer: hsla(88, 91%, 37%, 0.2);
+  --scroll-bar-visibility: "hidden";
+}
+
+* {
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
+  outline: none;
+  list-style: none;
+  text-decoration: none;
+  font-family: Arial, Helvetica, sans-serif;
+  color: black;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+
+a {
+  cursor: pointer;
+}
+
+.full-flex {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+#bottom-pannel {
+  position: fixed;
+  top: 90%;
+  width: 100vw;
+  height: 10%;
+  background-color: hsl(0, 0%, 87%);
+  z-index: 3;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  -moz-column-gap: 20px;
+       column-gap: 20px;
+  transition: top 200ms ease-in;
+  overflow: hidden;
+  box-shadow: 0px 0px 20px -10px #000;
+}
+#bottom-pannel .media-button {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  cursor: default;
+}
+#bottom-pannel .media-button .previous,
+#bottom-pannel .media-button .next {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+#bottom-pannel .media-button .previous,
+#bottom-pannel .media-button .next {
+  fill: black;
+  stroke: black;
+  stroke-width: 90px;
+  transition: all 150ms ease-in;
+  width: 15px;
+  height: 15px;
+  margin: 0px 10px 0px 10px;
+}
+#bottom-pannel .media-button .previous:hover,
+#bottom-pannel .media-button .next:hover {
+  fill: rgb(158, 158, 158);
+  stroke: rgb(158, 158, 158);
+}
+#bottom-pannel .media-button .next {
+  transform: rotate(180deg);
+}
+#bottom-pannel #soundControl {
+  height: 18px;
+  width: 18px;
+}
+#bottom-pannel #soundControl .st0 {
+  fill: var(--color-theme);
+  transition: fill 200ms ease-in;
+  transition: all 200ms ease;
+}
+#bottom-pannel #soundControl .st1 {
+  fill: none;
+  stroke: var(--color-theme);
+  transition: stroke 200ms ease-in;
+  stroke-width: 10;
+  stroke-linecap: round;
+  stroke-miterlimit: 10;
+}
+#bottom-pannel #soundControl .point-null {
+  visibility: hidden;
+  fill: none;
+  stroke-linecap: round;
+  stroke: var(--color-theme-dim);
+  stroke-width: 10;
+}
+
+#playing {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 10px;
+}
+#playing #cover {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: var(--color-theme);
+  transition: background-color 200ms ease-in;
+  border-radius: 50%;
+  width: 55px;
+  height: 55px;
+  background-size: 55px;
+  box-shadow: 0px 5px 10px -1px rgb(134, 134, 134);
+  background-image: url("./../svg/music record.svg");
+}
+#playing .name-artist {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 20px;
+  width: 150px;
+}
+#playing .name-artist #name {
+  font-size: 20px;
+  font-weight: bold;
+}
+#playing .name-artist #artist {
+  font-size: 13px;
+  font-weight: bold;
+}
+
+#secondary-cover {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  position: fixed;
+  top: 100%;
+  left: 10px;
+  z-index: 2;
+  width: 200px;
+  height: 66px;
+  transition: top 250ms ease;
+  transition-delay: 50ms;
+}
+#secondary-cover #playing-cover {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  cursor: pointer;
+  transition-property: top transform;
+  transition-timing-function: ease;
+  transition-duration: 500ms;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+#secondary-cover #playing-cover > div {
+  position: absolute;
+  align-self: center;
+  transform: translateX(-50%) rotate(0deg);
+  left: 50%;
+  width: 50px;
+  height: 50px;
+  background-size: 50px;
+  border-radius: 50%;
+  animation-duration: 20s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+@keyframes rotate {
+  from {
+    transform: translateX(-50%) rotate(0deg);
+  }
+  to {
+    transform: translateX(-50%) rotate(360deg);
+  }
+}
+#secondary-cover #playing-cover #svg {
+  position: absolute;
+}
+#secondary-cover #playing-cover #svg #circle {
+  border: 2px solid #000;
+}
+#secondary-cover #seconday-name-artist {
+  position: absolute;
+  left: 35%;
+  top: 25%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+#secondary-cover #seconday-name-artist #seconday-name {
+  font-size: 13px;
+  font-weight: bold;
+}
+#secondary-cover #seconday-name-artist #seconday-artist {
+  font-size: 7px;
+  font-weight: bold;
+}
+
+.left-label,
+.right-label {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.left-label {
+  margin-right: 10px;
+}
+
+.right-label {
+  margin-left: 10px;
+}
+
+#arrow {
+  position: fixed;
+  top: 88.5%;
+  left: 98.25%;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(237, 237, 237);
+  z-index: 4;
+  border-radius: 50%;
+  transition: all 100ms ease-in;
+  padding: 1px;
+  gap: 2px;
+}
+#arrow div {
+  width: 2px;
+  height: 7.5px;
+  border-radius: 3px;
+  background-color: #000;
+  transition: all 100ms ease-in;
+}
+#arrow #left {
+  transform: rotate(-45deg);
+}
+#arrow #right {
+  transform: rotate(45deg);
+}

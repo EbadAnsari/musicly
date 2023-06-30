@@ -1,0 +1,144 @@
+:root {
+  --anti-flash-white-98: hsl(0, 0%, 90%);
+  --anti-flash-white-99: hsl(0, 0%, 94%);
+  --left-from: 90%;
+  --left-width: 18%;
+  --left-height: 90%;
+  --right-left: 18%;
+  --right-width: 82%;
+  --right-height: 90%;
+  --bottom-from: 90%;
+  --bottom-width: 100vw;
+  --bottom-height: 10%;
+  --color-theme: hsl(88, 91%, 37%);
+  --color-theme-dim: hsla(88, 91%, 37%, 0.7);
+  --color-theme-dimer: hsla(88, 91%, 37%, 0.2);
+  --scroll-bar-visibility: "hidden";
+}
+
+* {
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
+  outline: none;
+  list-style: none;
+  text-decoration: none;
+  font-family: Arial, Helvetica, sans-serif;
+  color: black;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+
+a {
+  cursor: pointer;
+}
+
+.full-flex {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+#artist-bar-container {
+  position: absolute;
+  top: 370px;
+  height: 46%;
+  width: 100%;
+  padding: 6px;
+}
+#artist-bar-container .show-all {
+  position: absolute;
+  left: 92%;
+  top: -26px;
+  height: 20px;
+  width: 50px;
+  font-size: 10px;
+  padding: 5px;
+  color: rgb(0, 85, 255);
+  border-radius: 5px;
+  text-decoration: none;
+  transition: background-color 300ms ease-in;
+}
+#artist-bar-container .show-all:hover {
+  background-color: rgba(0, 85, 255, 0.088);
+}
+#artist-bar-container #artist-bar {
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  gap: 40px;
+  transition: height 200ms ease-in;
+}
+#artist-bar-container #artist-bar .artist {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#artist-bar-container #artist-bar .artist .artist-image {
+  width: 80px;
+  height: 80px;
+  background-image: url("./../svg/music record.svg");
+  background-size: contain;
+  background-position: center;
+  box-shadow: 0px 5px 10px -1px rgb(134, 134, 134);
+  background-repeat: no-repeat;
+  border-radius: 50%;
+}
+#artist-bar-container #artist-bar .artist .artist-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  height: 30px;
+  font-size: 12px;
+}
+#artist-bar-container #artist-bar .artist .artist-info .artist-name {
+  font-size: 1em;
+  font-weight: 700;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+#artist-bar-container #artist-bar .artist .artist-info .artist-genre-name {
+  font-size: 0.7em;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+#artist-info-bar {
+  width: 100vw;
+  height: -moz-max-content;
+  height: max-content;
+  display: grid;
+  grid-template-columns: 250px 1fr;
+  grid-template-rows: 250px;
+  -moz-column-gap: 10px;
+       column-gap: 10px;
+  /* flex-wrap: wrap; */
+}
+#artist-info-bar #artist-cover {
+  width: 200px;
+  height: 200px;
+  background-image: url("../svg/music record.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 50%;
+  background-color: red;
+  justify-self: center;
+  align-self: center;
+}
+#artist-info-bar #artist-name {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 4em;
+  font-weight: bold;
+  align-self: center;
+}

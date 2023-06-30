@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html name="musicly-album-listing">
+
+<head>
+	<link rel="stylesheet" href="./../css/album.css">
+	<link rel="stylesheet" href="./../css/song.css">
+
+	<style id="style"></style>
+
+	<style>
+		#song-list-container {
+			height: 64vh;
+			margin-left: 4px;
+		}
+
+		#song-list-container #song-list {
+			padding: 10px 0px 10px 0px;
+		}
+
+		#spreader-container {
+			position: absolute;
+			left: 0px;
+			top: 0px;
+			width: 100%;
+			height: 250px;
+			overflow: hidden;
+		}
+
+		#spreader {
+			width: 0px;
+			height: 700px;
+			transform: translateX(-50%);
+			/* background-color: red; */
+			box-shadow: 0px 0px 300px 200px rgba(255, 255, 255, 0.2);
+			position: absolute;
+			top: 0px;
+			left: 0px;
+			z-index: 1;
+		}
+	</style>
+</head>
+
+<body>
+
+	<div id="right-container">
+		<div id="album-info-bar">
+			<div id="spreader-container">
+				<div id="spreader"></div>
+			</div>
+			<div id="album-cover"></div>
+			<div id="album-info-icon">
+				<div id="album-title-artist-info">
+					<div id="album-title">New Blood</div>
+					<a id="album-artist" href="#">Yellow Claw</a>
+				</div>
+				<div id="album-genre-year-songs-info">
+					<a id="album-genre" href="#">Trap</a>
+					<div class="seprator"></div>
+					<a id="album-year" href="#">2012</a>
+					<div class="seprator"></div>
+					<div id="album-songs">3 Songs</div>
+				</div>
+				<div id="icon">
+					<div id="play-icon"></div>
+					<!-- <svg id="shuffle-play-icon" viewBox="0 0 1000 1000">
+						<path class="st0" d="M792.7,606l113,277.9c5.6,13.7-8.1,27.4-21.8,21.8L606,792.7c-13.9-5.7-13.9-25.4,0-31.1l47.1-19
+						c11.1-4.5,14.1-18.9,5.6-27.4L511.8,568.4c-6.5-6.5-17.2-6.5-23.7,0L219.7,836.9c-7.8,7.8-18,11.7-28.3,11.7s-20.5-3.9-28.3-11.7
+						c-15.6-15.6-15.6-41,0-56.6l268.5-268.5c6.5-6.5,6.5-17.2,0-23.7L163.1,219.7c-15.6-15.6-15.6-40.9,0-56.6
+						c15.6-15.6,40.9-15.6,56.6,0l268.5,268.5c6.5,6.5,17.2,6.5,23.7,0l146.9-146.9c8.5-8.5,5.6-22.9-5.6-27.4l-47.1-19
+						c-14-5.6-14-25.4,0-31.1l277.9-113c13.7-5.6,27.4,8.1,21.8,21.8L792.7,394c-5.7,13.9-25.4,13.9-31.1,0l-19-47.1
+						c-4.5-11.1-18.9-14.1-27.4-5.6L568.4,488.2c-6.5,6.5-6.5,17.2,0,23.7l146.9,146.9c8.5,8.5,22.9,5.6,27.4-5.6l19-47.1
+						C767.3,592.1,787.1,592,792.7,606z" />
+					</svg> -->
+				</div>
+			</div>
+		</div>
+
+		<div id="song-list-container">
+			<div id="song-list"></div>
+		</div>
+	</div>
+
+	<script>
+
+		const spread = document.getElementById("spreader");
+		const spreadingElement = new Array("album-info-bar");
+		document.getElementById("album-info-bar").addEventListener("mousemove", (event) => {
+			// console.log(event);
+			const spread = document.getElementById("spreader");
+			// console.log(spread);
+			try {
+				// if ((event.clientX) < 608 && (event.clientX) > 0)
+				spread.style.left = event.clientX + "px";
+			}
+			catch (error) {
+				console.log(error);
+			}
+		});
+
+	</script>
+
+	<!-- <script>
+
+		for (let i = 0; i < 10; i++)
+			document.getElementById("song-list").appendChild(createSong({ title: "Lean On", artist: "DJ Snake, Major Lazer, MO", album: "Peace Is The Mission", genre: "Moombathon", duration: "03:13" }));
+
+		let lastSong = null;
+		Array.from(document.getElementsByClassName("song")).forEach((element) => {
+			element.addEventListener("click", (event) => {
+				if (lastSong) {
+					lastSong.style.backgroundColor = "hsl(48, 100%, 90%)";
+					Array.from(lastSong.children).forEach((element) => {
+						element.style.color = "black";
+					});
+				}
+				Array.from(element.children).forEach((element) => {
+					element.style.color = "white";
+				});
+				element.style.backgroundColor = "hsl(48, 36.96%, 20%)";
+				lastSong = element;
+			});
+		});
+
+		hsla = { h: 48, s: 36.96, l: 20, a: 1 };
+
+		setScrollBar(5, hsl(hsla, 0.045), hsl(hsla), "xy", (value) => {
+			value.doc = document;
+			value.scrollBar = document.getElementById("style");
+		});
+
+	</script> -->
+
+</body>
+
+</html>

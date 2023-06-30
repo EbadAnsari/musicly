@@ -1,0 +1,17 @@
+{
+    "name": "musicly",
+    "version": "1.0.0",
+    "description": "",
+    "main": "",
+    "scripts": {
+        "start": "node server/server.mjs",
+        "dev": "nodemon.cmd ./server/server.mjs",
+        "database": "python ./python/tag-editor.py",
+        "test": "nodemon.cmd test/test.mjs",
+        "app": "nodemon.cmd app.mjs",
+        "db-json": "node python/json-database.mjs"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC"
+}

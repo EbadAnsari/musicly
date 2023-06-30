@@ -1,0 +1,118 @@
+:root {
+  --anti-flash-white-98: hsl(0, 0%, 90%);
+  --anti-flash-white-99: hsl(0, 0%, 94%);
+  --left-from: 90%;
+  --left-width: 18%;
+  --left-height: 90%;
+  --right-left: 18%;
+  --right-width: 82%;
+  --right-height: 90%;
+  --bottom-from: 90%;
+  --bottom-width: 100vw;
+  --bottom-height: 10%;
+  --color-theme: hsl(88, 91%, 37%);
+  --color-theme-dim: hsla(88, 91%, 37%, 0.7);
+  --color-theme-dimer: hsla(88, 91%, 37%, 0.2);
+  --scroll-bar-visibility: "hidden";
+}
+
+* {
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
+  outline: none;
+  list-style: none;
+  text-decoration: none;
+  font-family: Arial, Helvetica, sans-serif;
+  color: black;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+
+a {
+  cursor: pointer;
+}
+
+.full-flex {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+:root {
+  --width: 5px;
+  --height: 20px;
+}
+
+.play-pause {
+  background-color: var(--color-theme);
+  transition: background-color 200ms ease-in;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: -moz-max-content;
+  width: max-content;
+  height: -moz-max-content;
+  height: max-content;
+  transition: all 100ms ease;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  box-shadow: 0px 3px 10px -1px rgb(134, 134, 134);
+}
+.play-pause .fix-bar {
+  width: var(--width);
+  height: var(--height);
+  background-color: #fff;
+  border-radius: 10px;
+  transition: all 300ms ease;
+  margin: 3px;
+}
+.play-pause .moving-bar {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  margin: 3px;
+}
+.play-pause .moving-bar div {
+  width: var(--width);
+  height: calc(var(--height) / 2);
+  background-color: #fff;
+  transition: all 300ms ease;
+}
+.play-pause .moving-bar .moving-bar-1 {
+  height: 20px;
+  border-radius: 10px;
+  transform: rotate(-60deg) translate(-7.7px, -0.74px);
+}
+.play-pause .moving-bar .moving-bar-2 {
+  height: 20px;
+  border-radius: 10px;
+  transform: rotate(60deg) translate(-7.555px, 0.85px);
+}
+
+#repeat-icon {
+  width: 18px;
+  height: 18px;
+  transform: rotate(360deg);
+  transition: all 400ms ease;
+}
+#repeat-icon .st0 {
+  fill: var(--color-theme);
+  transition: fill 200ms ease-in;
+}
+#repeat-icon #repeat-one #one-repeat {
+  visibility: hidden;
+}
+#repeat-icon #no-repeat {
+  visibility: hidden;
+}
