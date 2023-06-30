@@ -137,4 +137,4 @@ music/*.m4a
 sass
 
 # dump files
-dump/*
+dump
