@@ -2,7 +2,7 @@
 
 ### 📁 `musicly`
 
-```markdown
+
 # 🎵 Musicly – Online Music Player
 
 **Musicly** is a lightweight web-based music player built using **vanilla JavaScript**. It streams music directly from the internet without requiring downloads, making it simple and fast to use across browsers.
